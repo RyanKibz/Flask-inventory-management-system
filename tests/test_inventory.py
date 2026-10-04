@@ -45,3 +45,9 @@ def test_delete_item():
 
     response = client.delete("/inventory/99")
     assert response.status_code == 200
+
+def test_item_not_found():
+    client = app.test_client()
+    response = client.get("/inventory/999")
+    assert response.status_code == 404
+    
